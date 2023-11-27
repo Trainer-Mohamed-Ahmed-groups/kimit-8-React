@@ -1,18 +1,16 @@
-import './App.css'
-import Bio from './components/Bio'
-import Header from './components/Header'
-import TodoList from './components/Todolist'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.scss'
+import Conditional from './components/Conditional'
+// import Gallery from './views/Gallery'
+// import Products from './views/Products'
 
 function App() {
 
   return (
     <>
-      <Header />
-      <div className="test">esdrftgyhu  </div>
-      <div>Hello</div>
-      <Bio />
-      <TodoList />
-      <div>Hello</div>
+      {/* <Products /> */}
+      {/* <Gallery /> */}
+      <Conditional />
     </>
   )
 }
