@@ -1,11 +1,12 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { Container, Row, Col, Form, ListGroup, Button } from "react-bootstrap"
 export default function Todo() {
 
     var [editedTask, setEditedTask] = useState({})
     var [newTask, setNewTask] = useState("")
     var [tasks, setTasks] = useState([])
-    
+    const inputRef = useRef()
+
     let handleNewTask = (ev) => {
         setNewTask(ev.target.value)
     }
@@ -14,6 +15,7 @@ export default function Todo() {
         ev.preventDefault()
         setTasks([...tasks, { text: newTask, done: false }])
         setNewTask('')
+        inputRef.current.focus()
     }
 
     let handleFinish = (index) => {
@@ -46,6 +48,7 @@ export default function Todo() {
                 <Row>
                     <Col md={9}>
                         <Form.Control
+                            ref={inputRef}
                             type="text"
                             placeholder="Add new task"
                             value={newTask}
