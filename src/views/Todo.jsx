@@ -1,22 +1,41 @@
 import { useState } from "react"
-import { Container, Row, Col, Form, ListGroup } from "react-bootstrap"
+import { Container, Row, Col, Form, ListGroup, Button } from "react-bootstrap"
 export default function Todo() {
 
-    var [tasks, setTasks] = useState([])
+    var [editedTask, setEditedTask] = useState({})
     var [newTask, setNewTask] = useState("")
-
+    var [tasks, setTasks] = useState([])
+    
     let handleNewTask = (ev) => {
         setNewTask(ev.target.value)
     }
 
     let handleTasks = (ev) => {
         ev.preventDefault()
-        setTasks([...tasks, newTask])
+        setTasks([...tasks, { text: newTask, done: false }])
         setNewTask('')
     }
 
-    let handleDelete = (index) => {
-        console.log(index)
+    let handleFinish = (index) => {
+        let editedCopy = tasks[index]
+        let copyTasks = tasks;
+
+
+        editedCopy.done = !editedCopy.done;
+        setEditedTask(editedCopy)
+
+
+        copyTasks.splice(index, 1, editedCopy)
+        setTasks(copyTasks);
+    }
+
+    let handleDelete = (e, index) => {
+        e.stopPropagation()
+        let tasksCopy = tasks;
+
+        tasksCopy.splice(index, 1)
+        console.log(tasksCopy)
+        // setTasks(tasksCopy)
     }
 
     return (
@@ -47,7 +66,14 @@ export default function Todo() {
                             tasks.length > 0
                                 ?
                                 tasks.map((task, index) =>
-                                    <ListGroup.Item key={index}>{task} <button onClick={() => handleDelete(index)}>Delete</button></ListGroup.Item>
+                                    <ListGroup.Item
+                                        className={`d-flex justify-content-between task ${task.done && 'bg-success'}`}
+                                        key={index}
+                                        onClick={() => handleFinish(index)}
+                                    >
+                                        {task.text}
+                                        <Button variant="danger" onClick={(e) => handleDelete(e, index)}>Delete</Button>
+                                    </ListGroup.Item>
                                 )
                                 : <h2 className="text-center">No tasks here</h2>
                         }

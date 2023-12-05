@@ -10,10 +10,9 @@ function SiteNav() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mx-auto">
-                        <Link to="/" className="nav-link">Home to loop</Link>
-                        <Link to="/courses" className='nav-link'>Courses</Link>
-                        <Link to="/recipes" className='nav-link'>Recipes</Link>
+                        <Link to="/" className='nav-link'>Home</Link>
                         <Link to="/todo" className='nav-link'>Todo</Link>
+                        <Link to="/personal-data" className='nav-link'>Personal datas</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

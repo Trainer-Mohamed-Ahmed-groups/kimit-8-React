@@ -1,12 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss'
 import { Routes, Route } from "react-router-dom"
-// import HandlingEvents from './views/HandlingEvents';
 import Todo from './views/Todo';
-import Loop from './components/Loop';
-import Courses from './views/Courses';
-import Recipes from './views/Recipes';
 import SiteNav from './layout/SiteNav';
+import Home from './views/Home';
+import Form from './views/PersonalData';
 
 function App() {
 
@@ -14,14 +12,10 @@ function App() {
     <div>
       <SiteNav />
       <Routes>
-        <Route path="/" element={<Loop />} />
-        <Route path="/courses" element={<Courses />} />
-        <Route path="/recipes" element={<Recipes />} />
+        <Route path="/" element={<Home />} />
         <Route path="/todo" element={<Todo />} />
+        <Route path="/personal-data" element={<Form />} />
       </Routes>
-      {/*       
-      <HandlingEvents />
-      */}
     </div>
   )
 }
