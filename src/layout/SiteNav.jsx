@@ -13,9 +13,9 @@ function SiteNav() {
                     <Nav className="mx-auto">
                         <Link to="/" className='nav-link'>Home</Link>
                         <Link to="/todo" className='nav-link'>Todo</Link>
-                        <Link to="/personal-data" className='nav-link'>Personal datas</Link>
-                        <Link to="/useEffect-explain" className='nav-link'>useEffect explain</Link>
                         <Link to="/products" className='nav-link'>Products</Link>
+                        <Link to="/counter" className='nav-link'>Counter</Link>
+                        <Link to="/callback" className='nav-link'>Callback</Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Button variant="primary" onClick={theme.handleTheme}>Change theme</Button>
